@@ -63,7 +63,7 @@ def get_vectors_for_dictionary(source_text, all_dict_words):
     return similarity_matrix
 
 
-all_dict_words, ind = get_dict_words("en-hi_acronym_dicts 2", "en", "hi")
+all_dict_words, ind = get_dict_words("en-hi_acronym_dicts_2", "en", "hi")
 source_text = get_txt("BTP_report.pdf")
 
 start_time = time.time()
