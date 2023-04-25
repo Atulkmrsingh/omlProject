@@ -1,7 +1,8 @@
 import pdfplumber
 from setcover import select_glossaries1
 from probabilitysetcover import select_glossaries2
-
+from facilityCover import select_glossaries3
+from concaveOverModular import select_glossaries4
 
 def isMachineReadable(pdf_file):
     try:
@@ -24,7 +25,7 @@ def get_preference_order(pdf_path, ocr_lang, src_lang, trans_lang, glossaries_pa
 
     if isMachineReadable(pdf_path) :
         #return select_glossaries1(pdf_path, src_lang, trans_lang, glossaries_path) #set cover
-        return select_glossaries2(pdf_path, src_lang, trans_lang, glossaries_path)   #probability set cover
+        return select_glossaries4(pdf_path, src_lang, trans_lang, glossaries_path)   #probability set cover
     return None
 print(get_preference_order("BTP_report.pdf","en","en","hi","en-hi_acronym_dicts 2"))
 
