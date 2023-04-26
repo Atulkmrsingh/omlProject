@@ -29,7 +29,7 @@ def get_preference_order(pdf_path, ocr_lang, src_lang, trans_lang, glossaries_pa
         return select_glossaries4(pdf_path, src_lang, trans_lang, glossaries_path)   #probability set cover
     return None
 start = time.time()
-print(get_preference_order("animals.pdf","en","en","hi","en-hi_acronym_dicts 2"))
+print(get_preference_order("pdf24_merged.pdf","en","en","hi","en-hi_acronym_dicts_2"))
 end = time.time()
 print(end-start)
 

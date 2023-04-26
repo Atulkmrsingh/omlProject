@@ -91,7 +91,8 @@ def get_set_cover(source_text, all_dict_words, budget) :
     stop_words = set(stopwords.words('english')) 
     lemmatizer = WordNetLemmatizer()
 
-    tokens = get_tokens(source_text, tokenizer, lemmatizer, stop_words)
+    tokens = list(set(get_tokens(source_text, tokenizer, lemmatizer, stop_words)))
+    
     weights = get_idfs_samanantar(tokens)
     
     dict_coverage = []
@@ -116,7 +117,7 @@ def select_glossaries1(pdf_path, src_lang, trans_lang, glossaries_path) :
     
     txt = get_txt(pdf_path)
     all_dict_words = get_dict_words(glossaries_path, src_lang, trans_lang)
-
+    all_dict_words=dict(all_dict_words)
     set_cover = get_set_cover(txt, all_dict_words, len(all_dict_words))
     dictionaries = list(all_dict_words.keys())
     selected_dictionaries = [dictionaries[_[0]][:-4] for _ in set_cover]

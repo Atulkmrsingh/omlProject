@@ -9,9 +9,9 @@ combined_data = pd.DataFrame()
 # Loop through all CSV files in the folder and append them to the combined data
 for filename in os.listdir(folder_path):
     if filename.endswith('.csv'):
+        print(filename+',',end="")
         file_path = os.path.join(folder_path, filename)
         csv_data = pd.read_csv(file_path)
         combined_data = combined_data.append(csv_data)
 
 # Write the combined data to a new CSV file
-combined_data.to_csv('combined.csv', index=False)
