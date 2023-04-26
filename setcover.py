@@ -92,6 +92,8 @@ def get_set_cover(source_text, all_dict_words, budget) :
     lemmatizer = WordNetLemmatizer()
 
     tokens = get_tokens(source_text, tokenizer, lemmatizer, stop_words)
+    tokens =  set(tokens)
+    tokens = list(tokens)
     weights = get_idfs_samanantar(tokens)
     
     dict_coverage = []

@@ -4,5 +4,14 @@
  function implemented in setcover.py 
  Using probability setcover
  function implemented in probabilitysetcover.py
- both these functions are imported in glossary_preferences.py
+ Using facilitylocationvariantmutualinformation
+ function implemented in facilityCover.py
+ Using concaveovermodular
+ function implemented in ConcaveoverModular.py
  
+ all these functions are imported in glossary_preferences.py
+ for setcover - change select_glossaries1 in get_preference function
+ probabilitysetcover - selectglossaries2
+ facilitylocationvariantmutualinformation - selectglossaries3
+ concaveovermodular -selectglossaries4
+ for mixture : combined.py
