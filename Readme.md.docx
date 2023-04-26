@@ -1,0 +1,8 @@
+ to run naive method :
+ python3 naive.py : 
+ Using set cover function :
+ function implemented in setcover.py 
+ Using probability setcover
+ function implemented in probabilitysetcover.py
+ both these functions are imported in glossary_preferences.py
+ 

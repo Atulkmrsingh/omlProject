@@ -67,7 +67,8 @@ def select_glossaries4(pdf_path, src_lang, trans_lang, glossaries_path) :
     stop_words = set(stopwords.words('english')) 
     lemmatizer = WordNetLemmatizer()
     tokens = get_tokens(txt, tokenizer, lemmatizer, stop_words)
-    idf = get_idfs_samanantar(tokens)
+    z = set(tokens)
+    idf = get_idfs_samanantar(z)
     n = len(all_dict_words)
     if n == 0:
         return None
@@ -76,7 +77,7 @@ def select_glossaries4(pdf_path, src_lang, trans_lang, glossaries_path) :
     if n == 2:
         return ",".join([name[:-4] for name in all_dict_words.keys()])
     if n > 2:
-        budget = min(n-1, 5)
+        budget = min(n-1, 10)
         selected_glossaries = get_facility_location(all_dict_words, tokens, tokenizer, lemmatizer, stop_words, idf, budget)
         dictionaries = list(all_dict_words.keys())
         selected_dictionaries = [dictionaries[_[0]][:-4] for _ in selected_glossaries]
@@ -87,23 +88,21 @@ def get_facility_location(all_dict_words, tokens, tokenizer, lemmatizer, stop_wo
         dict_coverage.append(get_coverage(dict_words, tokens, tokenizer, lemmatizer, stop_words, idf))
     data = np.array(dict_coverage)
     queryData = np.ones((1, data.shape[1]))
-    obj = ConcaveOverModularFunction(n=data.shape[0], num_queries=1, data=data, queryData=queryData, metric="euclidean", queryDiversityEta=0.1)
+    obj = ConcaveOverModularFunction(n=data.shape[0], num_queries=1, data=data, queryData=queryData, metric="euclidean", queryDiversityEta=1)
     greedyList = obj.maximize(budget=budget,optimizer='NaiveGreedy', stopIfZeroGain=False, stopIfNegativeGain=False, verbose=False)
     return greedyList
 
 def get_coverage(dict_words, tokens, tokenizer, lemmatizer, stop_words, idf) :
-    coverage = [] #stores probability of every token tokens are concepts.
-    for word in tokens : #for every word in pdf calculating the probability of being present in a dictionary
-        tokenized = [lemmatizer.lemmatize(word.lower()) for word in tokenizer.tokenize(word) if word.lower() not in stop_words]
-        if len(tokenized) == 0 :
-            coverage.append(0)
-            continue
-        try :
-            matched_inds = np.where(np.isin(dict_words, tokenized))
-            count = np.sum(idf[matched_inds])
-            prob = count/len(tokenized)
-            coverage.append(prob)
-        except :
-            coverage.append(0)
-            continue   
+    n = len(tokens)
+    coverage = [] #stores probability of every token ,tokens are concepts.
+    z = set(tokens)
+    i = 0
+    for word in z : #for every word in pdf calculating the probability of being present in a dictionary
+        prob = 0
+
+        if word in dict_words:
+          count =  tokens.count(word)
+          prob = count*idf[i]/len(z)
+        coverage.append(prob) 
+        i=i+1    
     return np.array(coverage)

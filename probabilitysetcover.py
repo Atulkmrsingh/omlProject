@@ -56,20 +56,15 @@ def get_idfs_samanantar(tokens) :
     weights = [idf[token] if token in idf else unknown_idf for token in tokens ]
     return weights
 def get_coverage(dict_words, tokens, tokenizer, lemmatizer, stop_words) :
-    coverage = [] #stores probability of ebery token tokens are concepts.
-    for word in tokens : #for every word in pdf calculating the probability of being present in a dictionary
-        tokenized = [lemmatizer.lemmatize(word.lower()) for word in tokenizer.tokenize(word) if word.lower() not in stop_words]
-        if len(tokenized) == 0 :
-            coverage.append(0)
-            continue
-        try :
-            matched_inds = np.where(dict_words == tokenized)
-            count = len(matched_inds)
-            prob = count/len(tokens)
-            coverage.append(prob)
-        except :
-            coverage.append(0)
-            continue   
+    n = len(tokens)
+    coverage = [] #stores probability of every token ,tokens are concepts.
+    z = set(tokens)
+    for word in z : #for every word in pdf calculating the probability of being present in a dictionary
+        prob = 0
+        if word in dict_words:
+          count =  tokens.count(word)
+          prob = count/len(z)
+        coverage.append(prob)     
     return np.array(coverage)
 
 
@@ -78,7 +73,9 @@ def select_glossaries2(pdf_path, src_lang, trans_lang, glossaries_path) :
         return None
     txt = get_txt(pdf_path)
     all_dict_words = get_dict_words(glossaries_path, src_lang, trans_lang)
-    set_cover = get_set_cover(txt, all_dict_words, len(all_dict_words))
+    n= len(all_dict_words)
+    budget = min(n,10)
+    set_cover = get_set_cover(txt, all_dict_words, budget)
     dictionaries = list(all_dict_words.keys())
     selected_dictionaries = [dictionaries[_[0]][:-4] for _ in set_cover]
     return ",".join(selected_dictionaries)
@@ -89,14 +86,21 @@ def get_set_cover(source_text, all_dict_words, budget) :
     stop_words = set(stopwords.words('english')) 
     lemmatizer = WordNetLemmatizer()
     tokens = get_tokens(source_text, tokenizer, lemmatizer, stop_words)
-    weights = get_idfs_samanantar(tokens)
+    z = set(tokens)
+    weights = get_idfs_samanantar(z)
+    
+    
+    
+    # weights = get_idfs_samanantar(tokens)
     dict_coverage = []
     for name, dict_words in all_dict_words.items() :
             dict_coverage.append(get_coverage(dict_words, tokens, tokenizer, lemmatizer, stop_words))
+   
+
     n=len(all_dict_words)
     if budget >= n :
         budget = n - 1
-    obj = ProbabilisticSetCoverFunction(n=n, probs=dict_coverage, num_concepts=len(tokens), concept_weights = weights)
+    obj = ProbabilisticSetCoverFunction(n=n, probs=dict_coverage, num_concepts=len(z), concept_weights = weights)
     greedyList = obj.maximize(budget=budget, optimizer='NaiveGreedy', stopIfZeroGain=False, stopIfNegativeGain=False, verbose=False)
     
     return greedyList

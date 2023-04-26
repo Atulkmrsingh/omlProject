@@ -64,17 +64,18 @@ def get_vectors_for_dictionary(source_text, all_dict_words):
 
 
 all_dict_words, ind = get_dict_words("en-hi_acronym_dicts 2", "en", "hi")
-source_text = get_txt("BTP_report.pdf")
+source_text = get_txt("animals.pdf")
 
 start_time = time.time()
 g = get_vectors_for_dictionary(source_text, all_dict_words)
+
 budget = 10
 ind_budget = [sum(lst) for lst in g]
 sorted_sums = sorted(ind_budget, reverse=True)[:budget]
 top_k_indices = [ind_budget.index(sum_val) for sum_val in sorted_sums]
 for entry in top_k_indices:
     print(ind[entry])
-end_time = time.time()
 
+end_time = time.time()
 total_time = end_time - start_time
 print(f"Total time taken: {total_time} seconds.")

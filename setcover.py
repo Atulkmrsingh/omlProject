@@ -101,6 +101,7 @@ def get_set_cover(source_text, all_dict_words, budget) :
     n=len(all_dict_words)
     if budget >= n :
         budget = n - 1
+    budget = 10
 
     obj = SetCoverFunction(n=n, cover_set=dict_coverage, num_concepts=len(tokens), concept_weights = weights)
     greedyList = obj.maximize(budget=budget, optimizer='NaiveGreedy', stopIfZeroGain=False, stopIfNegativeGain=False, verbose=False)

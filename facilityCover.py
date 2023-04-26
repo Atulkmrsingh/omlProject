@@ -5,6 +5,7 @@ import csv
 import PyPDF2
 from submodlib import FacilityLocationVariantMutualInformationFunction
 from PyPDF2 import PdfReader
+import time
 
 import nltk
 from nltk.tokenize import RegexpTokenizer
@@ -76,7 +77,7 @@ def select_glossaries3(pdf_path, src_lang, trans_lang, glossaries_path) :
     if n == 2:
         return ",".join([name[:-4] for name in all_dict_words.keys()])
     if n > 2:
-        budget = min(n-1, 5)
+        budget = min(n-1, 10)
         selected_glossaries = get_facility_location(all_dict_words, tokens, tokenizer, lemmatizer, stop_words, idf, budget)
         dictionaries = list(all_dict_words.keys())
         selected_dictionaries = [dictionaries[_[0]][:-4] for _ in selected_glossaries]
@@ -92,18 +93,14 @@ def get_facility_location(all_dict_words, tokens, tokenizer, lemmatizer, stop_wo
     return greedyList
 
 def get_coverage(dict_words, tokens, tokenizer, lemmatizer, stop_words, idf) :
-    coverage = [] #stores probability of every token tokens are concepts.
-    for word in tokens : #for every word in pdf calculating the probability of being present in a dictionary
-        tokenized = [lemmatizer.lemmatize(word.lower()) for word in tokenizer.tokenize(word) if word.lower() not in stop_words]
-        if len(tokenized) == 0 :
-            coverage.append(0)
-            continue
-        try :
-            matched_inds = np.where(np.isin(dict_words, tokenized))
-            count = np.sum(idf[matched_inds])
-            prob = count/len(tokenized)
-            coverage.append(prob)
-        except :
-            coverage.append(0)
-            continue   
+    n = len(tokens)
+    coverage = [] #stores probability of every token ,tokens are concepts.
+    z = set(tokens)
+    for word in z : #for every word in pdf calculating the probability of being present in a dictionary
+        prob = 0
+        if word in dict_words:
+          count =  tokens.count(word)
+          prob = count/len(z)
+        coverage.append(prob)     
     return np.array(coverage)
+
