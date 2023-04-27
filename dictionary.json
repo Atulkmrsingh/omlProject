@@ -1,0 +1,370 @@
+{
+    "subjects": [
+        {
+            "name": "Agri",
+            "files": [
+                {
+                    "name": "agri.csv"
+                },
+                {
+                    "name": "agri_term.csv"
+                }
+            ]
+        },
+        {
+            "name": "Administrative",
+            "files": [
+                {
+                    "name": "administrative.csv"
+                }
+            ]
+        },
+        {
+            "name": "Biotech",
+            "files": [
+                {
+                    "name": "biotech.csv"
+                }
+            ]
+        },
+        {
+            "name": "Botany",
+            "files": [
+                {
+                    "name": "botany.csv"
+                },
+                {
+                    "name": "palaeobotany.csv"
+                }
+            ]
+        },
+        {
+            "name": "Broadcasting",
+            "files": [
+                {
+                    "name": "broadcasting.csv"
+                }
+            ]
+        },
+        {
+            "name": "Cell and Molecular Biology",
+            "files": [
+                {
+                    "name": "cell_bio.csv"
+                },
+                {
+                    "name": "cell_mol_bio.csv"
+                }
+            ]
+        },
+        {
+            "name": "Chemistry",
+            "files": [
+                {
+                    "name": "chem.csv"
+                },
+                {
+                    "name": "chem_eng.csv"
+                }
+            ]
+        },
+        {
+            "name": "Clinical",
+            "files": [
+                {
+                    "name": "clinical.csv"
+                }
+            ]
+        },
+        {
+            "name": "Computers",
+            "files": [
+                {
+                    "name": "comp.csv"
+                },
+                {
+                    "name": "it.csv"
+                },
+                {
+                    "name": "med_comp.csv"
+                },
+                {
+                    "name": "semiconductor.csv"
+                }
+            ]
+        },
+        {
+            "name": "Defence",
+            "files": [
+                {
+                    "name": "defence.csv"
+                }
+            ]
+        },
+        {
+            "name": "Economics",
+            "files": [
+                {
+                    "name": "economics.csv"
+                },
+                {
+                    "name": "economic_geo.csv"
+                }
+            ]
+        },
+        {
+            "name": "Electrical Engineering",
+            "files": [
+                {
+                    "name": "electrical.csv"
+                },
+                {
+                    "name": "electrical_3_1.csv"
+                },
+                {
+                    "name": "electronics.csv"
+                },
+                {
+                    "name": "mech_eng.csv"
+                }
+            ]
+        },
+        {
+            "name": "Environment",
+            "files": [
+                {
+                    "name": "env.csv"
+                }
+            ]
+        },
+        {
+            "name": "Forestry",
+            "files": [
+                {
+                    "name": "forestry.csv"
+                }
+            ]
+        },
+        {
+            "name": "Geography",
+            "files": [
+                {
+                    "name": "geo.csv"
+                },
+                {
+                    "name": "geography.csv"
+                },
+                {
+                    "name": "mining_geo.csv"
+                },
+                {
+                    "name": "petrology.csv"
+                },
+                {
+                    "name": "mineralogy.csv"
+                }
+            ]
+        },
+        {
+            "name": "Geology",
+            "files": [
+                {
+                    "name": "geology.csv"
+                }
+            ]
+        },
+        {
+            "name": "Geophysics",
+            "files": [
+                {
+                    "name": "geophysics.csv"
+                }
+            ]
+        },
+        {
+            "name": "History",
+            "files": [
+                {
+                    "name": "history2.csv"
+                }
+            ]
+        },
+        {
+            "name": "Homescience",
+            "files": [
+                {
+                    "name": "hom_sci.csv"
+                }
+            ]
+        },
+        {
+            "name": "ITIhas Paribhasha",
+            "files": [
+                {
+                    "name": "itihas_paribhasha.csv"
+                },
+                {
+                    "name": "shiksha_paribhasha.csv"
+                }
+            ]
+        },
+        {
+            "name": "Journalism and Printing",
+            "files": [
+                {
+                    "name": "journ_print.csv"
+                },
+                {
+                    "name": "printing_eng.csv"
+                }
+            ]
+        },
+        {
+            "name": "Library Information Science",
+            "files": [
+                {
+                    "name": "lib_info.csv"
+                },
+                {
+                    "name": "kosh_vigyan.csv"
+                }
+            ]
+        },
+        {
+            "name": "Linguistics",
+            "files": [
+                {
+                    "name": "linguistics.csv"
+                }
+            ]
+        },
+        {
+            "name": "Mathematics",
+            "files": [
+                {
+                    "name": "math.csv"
+                }
+            ]
+        },
+        {
+            "name": "Mechanical Engineering",
+            "files": [
+                {
+                    "name": "mech.csv"
+                },
+                {
+                    "name": "mech_eng.csv"
+                }
+            ]
+        },
+        {
+            "name": "Medical Science",
+            "files": [
+                {
+                    "name": "med.csv"
+                },
+                {
+                    "name": "microbio.csv"
+                },
+                {
+                    "name": "psychology.csv"
+                }
+            ]
+        },
+        {
+            "name": "Operational Research",
+            "files": [
+                {
+                    "name": "operational_res.csv"
+                }
+            ]
+        },
+        {
+            "name": "Palaeontology",
+            "files": [
+                {
+                    "name": "palaeontology.csv"
+                }
+            ]
+        },
+        {
+            "name": "Physics",
+            "files": [
+                {
+                    "name": "phy.csv"
+                },
+                {
+                    "name": "plasma.csv"
+                }
+            ]
+        },
+        {
+            "name": "Political Science",
+            "files": [
+                {
+                    "name": "political.csv"
+                }
+            ]
+        },
+        {
+            "name": "Quality Control",
+            "files": [
+                {
+                    "name": "quality_cont.csv"
+                }
+            ]
+        },
+        {
+            "name": "RBI",
+            "files": [
+                {
+                    "name": "rbi.csv"
+                }
+            ]
+        },
+        {
+            "name": "Samaj Karya",
+            "files": [
+                {
+                    "name": "samaj_karya.csv"
+                },
+                {
+                    "name": "sociology.csv"
+                }
+            ]
+        },
+        {
+            "name": "Sericulture",
+            "files": [
+                {
+                    "name": "sericulture.csv"
+                }
+            ]
+        },
+        {
+            "name": "Space Science",
+            "files": [
+                {
+                    "name": "space_sci.csv"
+                }
+            ]
+        },
+        {
+            "name": "Telecommunications",
+            "files": [
+                {
+                    "name": "telecomm.csv"
+                },
+                {
+                    "name": "vanijya.csv"
+                },
+                {
+                    "name": "western_music.csv"
+                },
+                {
+                    "name": "zoology.csv"
+                }
+            ]
+        }
+    ]
+}

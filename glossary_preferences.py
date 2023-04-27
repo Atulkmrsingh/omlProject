@@ -30,6 +30,7 @@ def get_preference_order(pdf_path, ocr_lang, src_lang, trans_lang, glossaries_pa
     return None
 start = time.time()
 print(get_preference_order("animals.pdf","en","en","hi","en-hi_acronym_dicts_2"))
+
 end = time.time()
 print(end-start)
 
